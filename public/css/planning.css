@@ -1,0 +1,24 @@
+.card {
+    max-width: 250px;
+    
+    color: white;
+
+    background-color: #444;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    font-size: 0.9rem;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

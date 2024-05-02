@@ -1,0 +1,63 @@
+{% set user = app.session.get('user') %}
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>
+				{% block title %}Bienvenue!
+				{% endblock %}
+			</title>
+			<meta
+			name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<!-- App favicon -->
+			<link rel="shortcut icon" href="{{ asset('images/cinehub_large1.png') }}"/>
+
+			{{ encore_entry_link_tags('app') }}
+			<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+			<link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+			<link rel="stylesheet" href="{{ asset('css/responsive.css') }}"/>
+			{% block stylesheets %}
+				{# ici par exemple les tableaux #}
+			{% endblock %}
+		</head>
+
+		<body>
+			{% block loading %}
+				{{ include('templateFrontOffice/loading.html.twig') }}
+			{% endblock %}
+			{{ include('templateFrontOffice/backToTop.html.twig') }}
+			{{ include('templateFrontOffice/topBar.html.twig') }}
+			<br><br><br>
+			{% block body %}
+				contenu
+			{% endblock %}
+
+			{{ include('templateFrontOffice/footer.html.twig') }}
+
+			{# JS Scripts #}
+			{{ encore_entry_script_tags('app') }}
+			<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+			<script src="{{ asset('js/asyncloader.min.js') }}"></script>
+			<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+			<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+			<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+			<script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
+			<script src="{{ asset('js/popper.min.js') }}"></script>
+			<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
+			<script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+			<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+			<script src="{{ asset('js/slick.min.js') }}"></script>
+			<script src="{{ asset('js/streamlab-core.js') }}"></script>
+			<script src="{{ asset('js/script.js') }}"></script>
+			{% block javascripts %}{% endblock %}
+		</body>
+	</html>
+
+	
+	<a href="#" id="session-check"></a>
+	<script>
+		window.addEventListener('load', function () {
+var logoutLink = document.getElementById('session-check');
+logoutLink.click();
+});
+	</script>

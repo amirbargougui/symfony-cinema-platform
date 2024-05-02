@@ -1,0 +1,40 @@
+{% block body %}
+
+    <table id="results" class="table">
+        <thead>
+            <tr>
+                <th>Filmid</th>
+                <th>Titre</th>
+                <th>Réalisateur</th>
+                <th>Année de sortie</th>
+                <th>Durée</th>
+                <th>Synopsis</th>
+                <th>Catégorie</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.filmid }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.realisateur }}</td>
+                <td>{{ film.anneesortie }}</td>
+                <td>{{ film.duree }}</td>
+                <td>{{ film.synopsis }}</td>
+                <td>{{ film.categorieid }}</td>
+                <td>{{ film.image }}</td>
+                <td>
+                    <a href="{{ path('app_films_edit', {'filmid': film.filmid}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

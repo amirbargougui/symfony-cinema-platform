@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sieges index{% endblock %}
+
+{% block body %}
+    <h1>Sieges index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Siegeid</th>
+                <th>Numerosiege</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for siege in sieges %}
+            <tr>
+                <td>{{ siege.siegeid }}</td>
+                <td>{{ siege.numerosiege }}</td>
+                <td>{{ siege.statut }}</td>
+                <td>
+                    <a href="{{ path('app_sieges_show', {'siegeid': siege.siegeid}) }}">Show</a>
+                    <a href="{{ path('app_sieges_edit', {'siegeid': siege.siegeid}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sieges_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChartjsController!{% endblock %}
+
+{% block body %}
+<style>
+    .background {
+        background-color: #F0F8FF;
+        width: 80%;
+        margin-left: 150px;
+        padding: 2em;
+        box-shadow: 0.5px 0.5px 5px #000000;
+    }
+
+    .example-wrapper {
+        max-width: 1000px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+    }
+    
+    .card {
+  flex-basis: 45%;
+  transition: box-shadow 0.8s ease-in-out;
+}
+    
+    .card:hover{    
+        box-shadow: 0.5px 0.5px 10px #000000;
+    }
+</style>
+
+<div class="background">
+    <div class="example-wrapper">
+        <div class="card">
+            <div class="card-body">
+                {{render_chart(chart2) }}
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                {{render_chart(chart) }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="example-wrapper">
+        <div class="card">
+            <div class="card-body">
+                {{render_chart(chart3) }}
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                {{render_chart(chart4) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

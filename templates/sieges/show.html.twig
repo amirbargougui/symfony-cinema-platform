@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sieges{% endblock %}
+
+{% block body %}
+    <h1>Sieges</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Siegeid</th>
+                <td>{{ siege.siegeid }}</td>
+            </tr>
+            <tr>
+                <th>Numerosiege</th>
+                <td>{{ siege.numerosiege }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ siege.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sieges_index') }}">Retour à la liste</a>
+
+<a href="{{ path('app_sieges_edit', {'siegeid': Sieges.siegeid}) }}">Modifier</a>
+
+    {{ include('sieges/_delete_form.html.twig') }}
+{% endblock %}

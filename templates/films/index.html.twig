@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des films{% endblock %}
+
+{% block body %}
+    <h1>Liste des films</h1>
+    <div>
+        <input type="text" id="search" placeholder="Recherche par titre" style="background-color: #2A3042; color: white; border: 1px; border-radius: 5px; padding: 5px; width: 300px; height: 36px">
+        <a href="{{ path('app_films_stat') }}" class="btn btn-warning">
+        <i class="fas fa-chart-bar"></i> Générer statistiques
+        </a>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ path('app_film_search') }}",
+                type: "POST",
+                data: {query: query},
+                success: function(data) {
+                    $('#results').html(data);
+                    $('#results').css('width', '100%');
+                    $('#results').css('position', 'static');
+                }
+            });
+        });
+    });
+</script>
+    <table id="results" class="table">
+        <thead>
+            <tr>
+                <th>Filmid</th>
+                <th>Titre</th>
+                <th>Réalisateur</th>
+                <th>Année de sortie</th>
+                <th>Durée</th>
+                <th>Synopsis</th>
+                <th>Catégorie</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.filmid }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.realisateur }}</td>
+                <td>{{ film.anneesortie }}</td>
+                <td>{{ film.duree }}</td>
+                <td>{{ film.synopsis }}</td>
+                <td>{{ film.categorieid }}</td>
+                <td>{{ film.image }}</td>
+                <td>
+                    <a href="{{ path('app_films_edit', {'filmid': film.filmid}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_films_new') }}">Create new</a>
+{% endblock %}
+
+

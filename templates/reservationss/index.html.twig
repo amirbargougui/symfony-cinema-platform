@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Réservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des Réservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Places Disponibles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.reservationid }}</td>
+                    <td>{{ reservation.datereservation|date('Y-m-d') }}</td>
+                    <td>{{ reservation.heurereservation|date('H:i') }}</td>
+                    <td>{{ reservation.nombreplacesdisponibles }}</td>
+                    <td>
+            <a href="{{ path('admin_reservations_edit', {'id': reservation.reservationid}) }}">Modifier</a>
+            <form action="{{ path('admin_reservations_delete', {'id': reservation.reservationid}) }}" method="post" style="display: inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.reservationid) }}">
+                <button type="submit" class="btn btn-link">Supprimer</button>
+            </form>
+            <a href="#">Gérer les sièges</a>
+        </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('admin_reservations_new') }}">Nouvelle Réservation</a>
+{% endblock %}

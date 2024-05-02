@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sieges{% endblock %}
+
+{% block body %}
+    <h1>Create new Sieges</h1>
+
+    {{ include('sieges/_form.html.twig') }}
+
+    <a href="{{ path('app_sieges_index') }}">back to list</a>
+{% endblock %}

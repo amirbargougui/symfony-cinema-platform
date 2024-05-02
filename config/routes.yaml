@@ -1,3 +1,37 @@
-#index:
+# index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_sieges_index:
+    path: '/sieges'
+    controller: 'App\Controller\SiegesController::index'
+    methods: ['GET']
+
+app_sieges_new:
+    path: '/sieges/new'
+    controller: 'App\Controller\SiegesController::new'
+    methods: ['GET', 'POST']
+
+app_sieges_show:
+    path: '/sieges/{siegeid}'
+    controller: 'App\Controller\SiegesController::show'
+    methods: ['GET']
+
+app_sieges_edit:
+    path: '/sieges/{siegeid}/edit'
+    controller: 'App\Controller\SiegesController::edit'
+    methods: ['GET', 'POST']
+
+app_sieges_delete:
+    path: '/sieges/{siegeid}'
+    controller: 'App\Controller\SiegesController::delete'
+    methods: ['POST']
+
+admin_reservations_index:
+    path: '/reservations'
+    controller: 'App\Controller\ReservationssController::index'
+    methods: ['GET']
+admin_reservations_delete:
+    path: '/reservations/{id}'
+    controller: 'App\Controller\ReservationssController::delete'
+    methods: ['POST']

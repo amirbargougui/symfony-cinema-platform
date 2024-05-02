@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Réservation{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8"> <!-- Modifier la taille de la colonne selon vos besoins -->
+                <h1 class="text-center">Nouvelle Réservation</h1>
+
+                <form method="post">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+
+                    <div class="text-center"> <!-- Aligner les boutons au centre -->
+                        <button type="submit" class="btn btn-primary">Créer</button>
+                        <a href="{{ path('admin_reservations_index') }}" class="btn btn-secondary">Annuler</a>
+                    </div>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
